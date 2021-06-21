@@ -18,6 +18,7 @@ class Registration extends Model
         'year_level',
         'phone',
         'email',
+        'last_school',
         'payment_method',
         'payment_ref',
         'image',

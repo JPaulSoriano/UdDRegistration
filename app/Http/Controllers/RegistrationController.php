@@ -40,6 +40,7 @@ class RegistrationController extends Controller
             'year_level' => 'required',
             'phone' => 'required',
             'email' => 'required|unique:registrations,email',
+            'last_school' => 'required',
             'payment_method' => 'nullable',
             'payment_ref' => 'nullable|unique:registrations,payment_ref',
             'image' => 'nullable',

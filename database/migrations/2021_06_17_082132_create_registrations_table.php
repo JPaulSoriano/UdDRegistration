@@ -30,6 +30,7 @@ class CreateRegistrationsTable extends Migration
             $table->string('year_level');
             $table->string('phone');
             $table->string('email')->unique();
+            $table->string('last_school');
             $table->string('payment_method')->nullable();
             $table->string('payment_ref')->nullable()->unique();
             $table->string('image')->nullable();

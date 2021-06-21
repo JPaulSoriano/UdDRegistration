@@ -26,9 +26,15 @@
             <th>Payment Method</th>
             <th>Payment Reference No</th>
             <th>Screenshot</th>
+            @role('Cashier|Super Admin|Sao')
             <th>Payment Action</th>
+            @endrole
+            @role('Sao|Super Admin')
             <th>Admission Action</th>
+            @endrole
+            @role('Dean|Super Admin|Sao')
             <th>Enroll Action</th>
+            @endrole
         </tr>
         </thead>
         <tbody>
@@ -52,48 +58,49 @@
             View
             </button>
             </td>
+                @role('Cashier|Super Admin|Sao')
+                    <td>
+                        @if($registration->status == 1)
+                        <form action="{{ route('registrations.unverify', $registration) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">Unverify</button>
+                        </form>
+                        @else
+                        <a href="{{ route('registrations.verify', $registration) }}"
+                            class="btn btn-sm btn-primary">Verify</a>
+                        @endif
+                    </td>
+                @endrole
+                @role('Sao|Super Admin')
+                    <td>
+                    @if($registration->status_admission == 1)
+                    <form action="{{ route('registrations.unadmit', $registration) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Unadmit</button>
+                    </form>
+                    @else
+                    <a href="{{ route('registrations.admit', $registration) }}"
+                        class="btn btn-sm btn-primary">Admit</a>
+                    @endif
+                    </td>
+                @endrole
 
-            <td>
-                @if($registration->status == 1)
-                <form action="{{ route('registrations.unverify', $registration) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger">Unverify</button>
-                </form>
-                @else
-                <a href="{{ route('registrations.verify', $registration) }}"
-                    class="btn btn-sm btn-primary">Verify</a>
-                @endif
-            </td>
-
-
-            <td>
-            @if($registration->status_admission == 1)
-            <form action="{{ route('registrations.unadmit', $registration) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger">Unadmit</button>
-            </form>
-            @else
-            <a href="{{ route('registrations.admit', $registration) }}"
-                class="btn btn-sm btn-primary">Admit</a>
-            @endif
-            </td>
-
-
-            <td>
-            @if($registration->status_enrollment == 1)
-            <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-sm btn-danger">Unenroll</button>
-            </form>
-            @else
-            <a href="{{ route('registrations.enroll', $registration) }}"
-                class="btn btn-sm btn-primary">Enroll</a>
-            @endif
-            </td>
-
+                @role('Dean|Super Admin|Sao')
+                    <td>
+                    @if($registration->status_enrollment == 1)
+                    <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Unenroll</button>
+                    </form>
+                    @else
+                    <a href="{{ route('registrations.enroll', $registration) }}"
+                        class="btn btn-sm btn-primary">Enroll</a>
+                    @endif
+                    </td>
+                @endrole
 	    </tr>
         @endforeach
         </tbody>

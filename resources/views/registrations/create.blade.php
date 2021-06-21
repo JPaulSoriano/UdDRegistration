@@ -122,17 +122,24 @@
                                         </div>
 
 
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <label>Phone Number:</label>
                                                 <input type="number" name="phone" class="form-control" placeholder="Phone Number">
                                             </div>
                                         </div>
 
-                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <label>Email:</label>
                                                 <input type="email" name="email" class="form-control" placeholder="Email">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-4 col-sm-4 col-md-4">
+                                            <div class="form-group">
+                                                <label>Last School Attended:</label>
+                                                <input type="text" name="last_school" class="form-control" placeholder="Last School Attended">
                                             </div>
                                         </div>
 
