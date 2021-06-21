@@ -10,7 +10,7 @@
     @endif
 
 
-    <table class="table table-responsive table-bordered" id="registration">
+    <table class="table table-responsive table-bordered" style="font-size: 14px" id="registration">
         <thead>
         <tr>
             <th>Reference No</th>
@@ -23,6 +23,7 @@
             <th>Phone</th>
             <th>Course</th>
             <th>Year</th>
+            <th>Last School Attended</th>
             <th>Payment Method</th>
             <th>Payment Reference No</th>
             <th>Screenshot</th>
@@ -50,6 +51,7 @@
             <td>{{ $registration->phone }}</td>
             <td>{{ $registration->course->name }}</td>
             <td>{{ $registration->year_level }}</td>
+            <td>{{ $registration->last_school }}</td>
             <td>{{ $registration->payment_method }}</td>
             <td>{{ $registration->payment_ref }}</td>
             <td>
@@ -111,7 +113,16 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
             <div class="modal-body">
+            @if(!$registration->image)
+           <p class="text-center h2">No Payment Yet</p>
+            @else
             <img src="{{asset('storage/'.$registration->image)}}" style="height: 35vw; width: 100%;" class="img-fluid" alt="{{ $registration->payment_ref }}">
+                            @if(!$registration->auth_first_name)
+                                <p class="h4 font-weight-bold">Student Process the Payment himself</p>
+                            @else
+                            <p class="h4 font-weight-bold">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
+                            @endif
+            @endif
             </div>
             <div class="modal-footer border-0">
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>

@@ -63,10 +63,10 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                         <label>Enrollment Type</label>
-                                                        <select class="form-control" name="stud_type">
-                                                            <option value="New">New</option>
-                                                            <option value="Old">Old</option>
-                                                            <option value="Transferee">Transferee</option>
+                                                        <select class="form-control" name="stud_type" id="stud_type">
+                                                            <option value="0">New</option>
+                                                            <option value="1">Old</option>
+                                                            <option value="2">Transferee</option>
                                                         </select>
                                             </div>
                                         </div>
@@ -98,7 +98,7 @@
                                         <div class="col-xs-3 col-sm-3 col-md-3">
                                             <div class="form-group">
                                                 <label>Student Number:</label>
-                                                <input type="text" name="stud_no" class="form-control" placeholder="Student Number">
+                                                <input type="text" name="stud_no" class="form-control" placeholder="Student Number" id="stud_no" disabled>
                                             </div>
                                         </div>
 
@@ -225,4 +225,12 @@
     </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+document.getElementById('stud_type').onchange = function () {
+  document.getElementById("stud_no").disabled = (this.value === '0');
+}
+</script>
 @endsection

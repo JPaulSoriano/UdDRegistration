@@ -21,7 +21,7 @@
         @method('PUT')
 
         <div class="card border-0 shadow-sm my-3">
-        <div class="card-header bg-primary text-white">Payment</div>
+                <div class="card-header bg-primary text-white">Payment</div>
             <div class="card-body">
                 <div class="row">
                     <div class="col-xs-4 col-sm-4 col-md-4">
@@ -46,7 +46,38 @@
                     </div>
                 </div>
             </div>
-    </div>
+        </div>
+
+
+        <div class="card border-0 shadow-sm my-3">
+            <div class="card-header bg-primary text-white">Payment Authorization</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" name="auth_first_name" class="form-control" placeholder="First Name">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label>Middle Name</label>
+                                <input type="text" name="auth_middle_name" class="form-control" placeholder="Middle Name">
+                            </div>
+                        </div>
+
+                        <div class="col-xs-4 col-sm-4 col-md-4">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" name="auth_last_name" class="form-control" placeholder="Last Name">
+                            </div>
+                        </div>
+
+
+                    </div>
+            </div>
+        </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>

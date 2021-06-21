@@ -22,7 +22,7 @@ class CreateRegistrationsTable extends Migration
             $table->enum('status_admission', [0, 1])->default(0);
             $table->enum('status_enrollment', [0, 1])->default(0);
             $table->string('stud_type');
-            $table->string('stud_no');
+            $table->string('stud_no')->nullable();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('middle_name')->nullable();

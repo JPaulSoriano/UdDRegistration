@@ -32,7 +32,7 @@ class RegistrationController extends Controller
             'year' => 'required',
             'semester' => 'required',
             'stud_type' => 'required',
-            'stud_no' => 'required',
+            'stud_no' => 'nullable',
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_name' => 'nullable',
@@ -83,7 +83,10 @@ class RegistrationController extends Controller
         $request->validate([
             'image' => 'required',
             'payment_method' => 'required',
-            'payment_ref' => 'required|unique:registrations,payment_ref'
+            'payment_ref' => 'required|unique:registrations,payment_ref',
+            'auth_first_name' => 'required',
+            'auth_middle_name' => 'required',
+            'auth_last_name'=> 'required'
         ]);
   
         $input = $request->all();
