@@ -50,7 +50,7 @@
                             <p><span class="font-weight-bold">Payment Method:</span> {{ $registration->payment_method }}</p>
                         </div>
 
-                         @if($registration->payment_ref == 0 )
+                         @if(!$registration->payment_ref)
                          <div class="col-xs-12 col-sm-12 col-md-12 my-3 text-center">
                             <p class="text-danger font-weight-bold h4">You have not yet paid for registration <span class="mx-2"><a href="{{ route('registrations.edit', $registration->id) }}" class="btn btn-sm btn-primary" type="submit">Pay Now</a></span></p>
                         </div>
