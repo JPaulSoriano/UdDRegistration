@@ -13,6 +13,7 @@
     <table class="table table-responsive table-bordered" id="registration">
         <thead>
         <tr>
+            <th>Reference No</th>
             <th>Year</th>
             <th>Semester</th>
             <th>Type</th>
@@ -23,7 +24,7 @@
             <th>Course</th>
             <th>Year</th>
             <th>Payment Method</th>
-            <th>Reference No</th>
+            <th>Payment Reference No</th>
             <th>Screenshot</th>
             <th>Payment Action</th>
             <th>Admission Action</th>
@@ -33,6 +34,7 @@
         <tbody>
         @foreach ($registrations as $registration)
 	    <tr>
+            <td>{{ $registration->reg_ref }}</td>
             <td>{{ $registration->year }}</td>
             <td>{{ $registration->semester }}</td>
             <td>{{ $registration->stud_type }}</td>
