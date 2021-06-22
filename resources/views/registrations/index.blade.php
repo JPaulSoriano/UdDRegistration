@@ -236,6 +236,7 @@
         });
 
         $('#registration').DataTable({
+            order: [[0, 'desc']],
             dom: 'Bfrtip',
             buttons: [{
                 responsive: true,
