@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 use App\Registration;
 use App\Course;
+use App\Mail\RegisteredStudent;
+use App\Mail\RegisteredComplete;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class RegistrationController extends Controller
 {
@@ -56,12 +59,17 @@ class RegistrationController extends Controller
             $input['image'] = "$image";
         }
 
-        $input['reg_ref'] = mt_rand(1000000000, 9999999999);
+        do{
+           $ref = mt_rand(1000000000, 9999999999);
+           $exists = Registration::where('reg_ref', $ref)->exists();
+        }while($exists);
+
+        $input['reg_ref'] = $ref;
 
     
         $registration = Registration::create($input);
 
-
+        Mail::to($request->email)->send(new RegisteredStudent($registration));
 
     
         return redirect()->route('registrations.show', $registration)->with('success','Registration Success');
@@ -122,6 +130,30 @@ class RegistrationController extends Controller
         return redirect()->route('registrations.index');
     }
 
+    public function updateOrNo(Request $request, Registration $registration)
+    {
+        $registration->or_no = $request->or_no;
+        $registration->save();
+
+        if($registration->status == "0") {
+            return redirect()->route('registrations.verify', $registration);
+        }
+
+        return redirect()->route('registrations.index');
+    }
+
+    public function updateStudentNo(Request $request, Registration $registration)
+    {
+        $registration->stud_no = $request->stud_no;
+        $registration->save();
+
+        if($registration->status_enrollment == "0") {
+            return redirect()->route('registrations.enroll', $registration);
+        }
+
+        return redirect()->route('registrations.index');
+    }
+
 
     public function unadmit(Registration $registration)
     {
@@ -153,6 +185,13 @@ class RegistrationController extends Controller
         $registration->status_enrollment = '1';
         $registration->save();
 
+        Mail::to($registration->email)->send(new RegisteredComplete($registration));
+
         return redirect()->route('registrations.index');
+    }
+
+    public function sendEmail(Registration $registration)
+    {
+
     }
 }

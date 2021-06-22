@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="row">
 <div class="col-lg-12">
@@ -13,6 +14,7 @@
     <table class="table table-responsive table-bordered" style="font-size: 14px" id="registration">
         <thead>
         <tr>
+            <th>Date Registered</th>
             <th>Reference No</th>
             <th>Year</th>
             <th>Semester</th>
@@ -27,6 +29,7 @@
             <th>Payment Method</th>
             <th>Payment Reference No</th>
             <th>Screenshot</th>
+            <th>Or No</th>
             @role('Cashier|Super Admin|Sao')
             <th>Payment Action</th>
             @endrole
@@ -41,11 +44,12 @@
         <tbody>
         @foreach ($registrations as $registration)
 	    <tr>
+            <td>{{ $registration->created_at }}</td>
             <td>{{ $registration->reg_ref }}</td>
             <td>{{ $registration->year }}</td>
             <td>{{ $registration->semester }}</td>
             <td>{{ $registration->stud_type }}</td>
-            <td>{{ $registration->stud_no }}</td>
+            <td id="studentNo">{{ $registration->stud_no }}</td>
             <td>{{ $registration->full_name }}</td>
             <td>{{ $registration->email }}</td>
             <td>{{ $registration->phone }}</td>
@@ -60,8 +64,10 @@
             View
             </button>
             </td>
+            <td id="or">{{ $registration->or_no }}</td>
                 @role('Cashier|Super Admin|Sao')
                     <td>
+                       
                         @if($registration->status == 1)
                         <form action="{{ route('registrations.unverify', $registration) }}" method="POST">
                             @csrf
@@ -69,9 +75,14 @@
                             <button type="submit" class="btn btn-sm btn-danger">Unverify</button>
                         </form>
                         @else
-                        <a href="{{ route('registrations.verify', $registration) }}"
-                            class="btn btn-sm btn-primary">Verify</a>
+                        <!-- <a href="{{ route('registrations.verify', $registration) }}"
+                            class="btn btn-sm btn-primary">Verify</a> -->
+                        <button type="button" class="btn btn-sm btn-primary orno" data-id="{{ $registration->id }}">Verify</button>
                         @endif
+                        @if($registration->or_no)
+                        <a href="#" class="btn btn-sm btn-link orno" data-id="{{ $registration->id }}">Edit Or No</a>
+                        @endif
+                        
                     </td>
                 @endrole
                 @role('Sao|Super Admin')
@@ -98,9 +109,11 @@
                         <button type="submit" class="btn btn-sm btn-danger">Unenroll</button>
                     </form>
                     @else
-                    <a href="{{ route('registrations.enroll', $registration) }}"
-                        class="btn btn-sm btn-primary">Enroll</a>
+                    <!-- <a href="{{ route('registrations.enroll', $registration) }}"
+                        class="btn btn-sm btn-primary">Enroll</a> -->
+                    <button class="btn btn-sm btn-primary enrol" data-id="{{ $registration->id }}">Enroll</button>
                     @endif
+                    <a href="#" class="btn btn-sm btn-link enrol" data-id="{{ $registration->id }}">Edit Student No.</a>
                     </td>
                 @endrole
 	    </tr>
@@ -117,11 +130,11 @@
            <p class="text-center h2">No Payment Yet</p>
             @else
             <img src="{{asset('storage/'.$registration->image)}}" style="height: 35vw; width: 100%;" class="img-fluid" alt="{{ $registration->payment_ref }}">
-                            @if(!$registration->auth_first_name)
-                                <p class="h4 font-weight-bold">Student Process the Payment himself</p>
-                            @else
-                            <p class="h4 font-weight-bold">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
-                            @endif
+                @if(!$registration->auth_first_name)
+                    <p class="h4 font-weight-bold">Student Process the Payment himself</p>
+                @else
+                <p class="h4 font-weight-bold">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
+                @endif
             @endif
             </div>
             <div class="modal-footer border-0">
@@ -137,10 +150,90 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="orNoModal" tabindex="-1" aria-labelledby="orNoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="orNoModalLabel">Update Or No</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" method="post" id="orForm">
+            @csrf
+            @method('put')
+            <label for="or_no">Or No: </label>
+            <input type="text" id="or_no" name="or_no" class="form-control">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('orForm').submit();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="studNoModal" tabindex="-1" aria-labelledby="studNoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="studNoModalLabel">Update Student No.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" method="post" id="studForm">
+            @csrf
+            @method('put')
+            <label for="stud_no">Student Number: </label>
+            <input type="text" id="stud_no" name="stud_no" class="form-control">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('studForm').submit();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 @section('scripts')
 <script>
     $(document).ready(function() {
+
+        $(document).on('click', '.orno', function(e){
+            e.preventDefault();
+            jQuery.noConflict();
+            var id = $(this).data('id');
+            var tdParent = $(this).closest('td').closest('tr');
+            var url = "{{ url('/update-or') }}/" + id;
+            var orNo = tdParent.find("#or").text();
+            var modal = $('#orNoModal');
+
+            $('#orForm').attr('action', url);
+            $('#or_no').val(orNo);
+            modal.modal('show');
+        });
+
+        $(document).on('click', '.enrol', function(e){
+            e.preventDefault();
+            jQuery.noConflict();
+            var id = $(this).data('id');
+            var tdParent = $(this).closest('td').closest('tr');
+            var url = "{{ url('/update-stud-no') }}/" + id;
+            var studentNo = tdParent.find("#studentNo").text();
+            var modal = $('#studNoModal');
+
+            $('#studForm').attr('action', url);
+            $('#stud_no').val(studentNo);
+            modal.modal('show');
+        });
 
         $('#registration').DataTable({
             dom: 'Bfrtip',
@@ -159,10 +252,7 @@
                 },
 
                 {
-                    
                     extend: 'print',
-
-
                     exportOptions: {
                         columns: ':visible'
                     }
@@ -170,7 +260,6 @@
                 'colvis'
             ]
         });
-
     });
 </script>
 @endsection

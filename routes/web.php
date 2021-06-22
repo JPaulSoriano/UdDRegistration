@@ -41,8 +41,14 @@ Route::get('/admit/{registration}', 'RegistrationController@admit')->name('regis
 Route::delete('/unenroll/{registration}', 'RegistrationController@unenroll')->name('registrations.unenroll');
 Route::get('/enroll/{registration}', 'RegistrationController@enroll')->name('registrations.enroll');
 
+Route::put('/update-or/{registration}', 'RegistrationController@updateOrNo')->name('registrations.update.or');
+Route::put('/update-stud-no/{registration}', 'RegistrationController@updateStudentNo')->name('registrations.student.no');
+
 Route::resource('registrations','RegistrationController');
 
 
+Route::get('/view-attach', function(){
 
+    return response()->file(public_path('attachments/attachment.pdf'));
+});
 Route::get('/status', 'StatusController@status')->name('status');
