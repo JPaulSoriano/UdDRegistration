@@ -92,9 +92,9 @@ class RegistrationController extends Controller
             'image' => 'required',
             'payment_method' => 'required',
             'payment_ref' => 'required|unique:registrations,payment_ref',
-            'auth_first_name' => 'required',
-            'auth_middle_name' => 'required',
-            'auth_last_name'=> 'required'
+            'auth_first_name' => 'nullable',
+            'auth_middle_name' => 'nullable',
+            'auth_last_name'=> 'nullable'
         ]);
   
         $input = $request->all();

@@ -10,7 +10,7 @@
 @endif
 
 <div class="jumbotron shadow">
-<p class="font-weight-bold text-center">Important Notice: Please Save your Reference Number!</p>
+<h4 class="font-weight-bold text-center text-danger">Important Notice: Please Save your Reference Number!</h4>
 <hr class="my-4">
 <p class="font-weight-bold text-center h1">Regisration Reference Number: </p>
 <p class="font-weight-light h2 text-center">{{ $registration->reg_ref }}</p>

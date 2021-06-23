@@ -139,7 +139,7 @@
                                         <div class="col-xs-4 col-sm-4 col-md-4">
                                             <div class="form-group">
                                                 <label>Last School Attended:</label>
-                                                <input type="text" name="last_school" class="form-control" placeholder="Last School Attended">
+                                                <input type="text" name="last_school" class="form-control" placeholder="Last School Attended" id="school_att">
                                             </div>
                                         </div>
 
@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="mt-5">
-                                <p class="text-lead">Note: The following details are to be provided in order to finalize your registration. </br>You Can leave this blank and pay later. We will be sending you an email to finalize your registration after you pay.</p>
+                                <p class="text-lead">Note: The following details are to be provided in order to finalize your registration. </br>You Can leave this blank and pay later. We will be sending you an email to finalize your registration.</p>
                             </div>
 
                             <div class="card border-0 shadow-sm my-3">
@@ -183,7 +183,7 @@
                             </div>
 
                             <div class="mt-5">
-                                <p class="text-lead">Provide payee information in case the enrollee didn't process the payment himself</p>
+                                <p class="text-lead">Note: Provide payee information in case the enrollee didn't process the payment himself.</p>
                             </div>
 
                             <div class="card border-0 shadow-sm my-3">
@@ -230,7 +230,9 @@
 @section('scripts')
 <script>
 document.getElementById('stud_type').onchange = function () {
-  document.getElementById("stud_no").disabled = (this.value === '0');
+    document.getElementById("stud_no").disabled = (this.value === '0' || this.value === '2');
+    document.getElementById("school_att").readOnly = (this.value === '1');
+    document.getElementById("school_att").value = this.value === '1' ? 'Colegio de Dagupan' : '';
 }
 </script>
 @endsection

@@ -132,9 +132,9 @@
             @else
             <img src="{{asset('storage/'.$registration->image)}}" style="height: 35vw; width: 100%;" class="img-fluid" alt="{{ $registration->payment_ref }}">
                 @if(!$registration->auth_first_name)
-                    <p class="h4 font-weight-bold">Student Process the Payment himself</p>
+                    <p class="h4 font-weight-bold my-3">Student Process the Payment himself</p>
                 @else
-                <p class="h4 font-weight-bold">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
+                <p class="h4 font-weight-bold my-3">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
                 @endif
             @endif
             </div>

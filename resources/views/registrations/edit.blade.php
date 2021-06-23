@@ -20,6 +20,10 @@
     	@csrf
         @method('PUT')
 
+        <div class="mt-5">
+            <p class="text-lead">Note: The following details are to be provided in order to finalize your registration.</p>
+        </div>
+
         <div class="card border-0 shadow-sm my-3">
                 <div class="card-header bg-primary text-white">Payment</div>
             <div class="card-body">
@@ -48,6 +52,9 @@
             </div>
         </div>
 
+                            <div class="mt-5">
+                                <p class="text-lead">Note: Provide payee information in case the enrollee didn't process the payment himself.</p>
+                            </div>
 
         <div class="card border-0 shadow-sm my-3">
             <div class="card-header bg-primary text-white">Payment Authorization</div>
