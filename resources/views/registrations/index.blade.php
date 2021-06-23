@@ -117,15 +117,6 @@
                     <a href="#" class="btn btn-secondary btn-sm enrol btn-block" data-id="{{ $registration->id }}">Stud No</a>
                     </td>
                 @endrole
-                <td>
-                <form action="{{ route('registrations.destroy',$registration->id) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    @can('department-delete')
-                    <button type="submit" class="btn btn-danger"><i class="bi bi-trash2-fill"></i></button>
-                    @endcan
-                </form>
-                </td>
 	    </tr>
         @endforeach
         </tbody>

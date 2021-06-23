@@ -190,11 +190,4 @@ class RegistrationController extends Controller
         return redirect()->route('registrations.index');
     }
 
-    public function destroy(Registration $registration)
-    {
-        $registration->delete();
-    
-        return redirect()->route('registrations.index');
-    }
-
 }
