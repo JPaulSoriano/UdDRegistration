@@ -31,6 +31,6 @@ class RegisteredComplete extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.complete');
+        return $this->markdown('emails.complete')->subject('Registration Complete');
     }
 }
