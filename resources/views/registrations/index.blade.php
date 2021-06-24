@@ -48,8 +48,28 @@
             <td>{{ $registration->created_at }}</td>
             <td>{{ $registration->reg_ref }}</td>
             <td>{{ $registration->year }}</td>
-            <td>{{ $registration->semester }}</td>
-            <td>{{ $registration->stud_type }}</td>
+            <td>
+            @if($registration->semester == 0)
+            First
+            @endif
+            @if($registration->semester == 1)
+            Second
+            @endif
+            @if($registration->semester == 2)
+            Summer
+            @endif
+            </td>
+            <td>
+            @if($registration->stud_type == 0)
+            New
+            @endif
+            @if($registration->stud_type == 1)
+            Old
+            @endif
+            @if($registration->stud_type == 2)
+            Transferee
+            @endif
+            </td>
             <td id="studentNo">{{ $registration->stud_no }}</td>
             <td>{{ $registration->full_name }}</td>
             <td>{{ $registration->email }}</td>
