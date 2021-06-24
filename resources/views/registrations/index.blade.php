@@ -30,11 +30,11 @@
             <th>Payment Reference No</th>
             <th>Screenshot</th>
             <th>Or No</th>
-            @role('Cashier|Super Admin|Sao')
-            <th>Payment Action</th>
-            @endrole
             @role('Sao|Super Admin')
             <th>Admission Action</th>
+            @endrole
+            @role('Cashier|Super Admin|Sao')
+            <th>Payment Action</th>
             @endrole
             @role('Dean|Super Admin|Sao')
             <th>Enroll Action</th>
@@ -86,6 +86,28 @@
             </button>
             </td>
             <td id="or">{{ $registration->or_no }}</td>
+     
+                @role('Sao|Super Admin')
+                    <td>
+                    @if($registration->status_admission == 1)
+                    <form action="{{ route('registrations.unadmit', $registration) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger btn-block">Unadmit</button>
+                    </form>
+                    @else
+                    <!-- <a href="{{ route('registrations.admit', $registration) }}"
+                        class="btn btn-sm btn-primary btn-block">Admit</a> -->
+                        <button class="btn btn-sm btn-primary admit btn-block" data-id="{{ $registration->id }}">Admit</button>
+                    @endif
+                        @if($registration->status_enrollment == 0)
+                            <a href="#" class="btn btn-secondary btn-sm admit btn-block" data-id="{{ $registration->id }}">Temp Stud No</a>
+                        @endif
+                    </td>
+                @endrole
+
+
+
                 @role('Cashier|Super Admin|Sao')
                     <td>
                        
@@ -106,35 +128,21 @@
                         
                     </td>
                 @endrole
-                @role('Sao|Super Admin')
-                    <td>
-                    @if($registration->status_admission == 1)
-                    <form action="{{ route('registrations.unadmit', $registration) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger btn-block">Unadmit</button>
-                    </form>
-                    @else
-                    <a href="{{ route('registrations.admit', $registration) }}"
-                        class="btn btn-sm btn-primary btn-block">Admit</a>
-                    @endif
-                    </td>
-                @endrole
 
                 @role('Dean|Super Admin|Sao')
                     <td>
-                    @if($registration->status_enrollment == 1)
-                    <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger btn-block">Unenroll</button>
-                    </form>
-                    @else
-                    <!-- <a href="{{ route('registrations.enroll', $registration) }}"
-                        class="btn btn-sm btn-primary">Enroll</a> -->
-                    <button class="btn btn-sm btn-primary enrol btn-block" data-id="{{ $registration->id }}">Enroll</button>
-                    @endif
-                    <a href="#" class="btn btn-secondary btn-sm enrol btn-block" data-id="{{ $registration->id }}">Stud No</a>
+                      @if($registration->status_enrollment == 1)
+                      <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
+                          @csrf
+                          @method('DELETE')
+                          <button type="submit" class="btn btn-sm btn-danger btn-block">Unenroll</button>
+                      </form>
+                      @else
+                      <!-- <a href="{{ route('registrations.enroll', $registration) }}"
+                          class="btn btn-sm btn-primary">Enroll</a> -->
+                      <button class="btn btn-sm btn-primary enrol btn-block" data-id="{{ $registration->id }}">Enroll</button>
+                      @endif
+                      <a href="#" class="btn btn-secondary btn-sm enrol btn-block" data-id="{{ $registration->id }}">Stud No</a>
                     </td>
                 @endrole
 	    </tr>
@@ -223,6 +231,33 @@
   </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="tempstudNoModal" tabindex="-1" aria-labelledby="tempstudNoModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tempstudNoModalLabel">Temp Student No.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="#" method="post" id="tempstudForm">
+            @csrf
+            @method('put')
+            <label for="stud_no">Temp Student Number: </label>
+            <input type="text" name="stud_no" class="form-control">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" onclick="event.preventDefault();document.getElementById('tempstudForm').submit();">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 @section('scripts')
 <script>
@@ -255,6 +290,22 @@
             $('#stud_no').val(studentNo);
             modal.modal('show');
         });
+
+
+
+        $(document).on('click', '.admit', function(e){
+            e.preventDefault();
+            jQuery.noConflict();
+            var id = $(this).data('id');
+            var tdParent = $(this).closest('td').closest('tr');
+            var url = "{{ url('/temp-stud-no') }}/" + id;
+            var modal = $('#tempstudNoModal');
+
+            $('#tempstudForm').attr('action', url);
+            modal.modal('show');
+        });
+
+
 
         $('#registration').DataTable({
             order: [[0, 'desc']],

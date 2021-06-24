@@ -43,6 +43,7 @@ Route::get('/enroll/{registration}', 'RegistrationController@enroll')->name('reg
 
 Route::put('/update-or/{registration}', 'RegistrationController@updateOrNo')->name('registrations.update.or');
 Route::put('/update-stud-no/{registration}', 'RegistrationController@updateStudentNo')->name('registrations.student.no');
+Route::put('/temp-stud-no/{registration}', 'RegistrationController@tempStudentNo')->name('registrations.tempstudent.no');
 
 Route::resource('registrations','RegistrationController');
 

@@ -62,56 +62,56 @@
 
                     @if($registration->status == 1 && $registration->status_admission == 0 && $registration->status_enrollment == 0)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Processing</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Processing</div>
                     </div>
                     @elseif($registration->status == 1 && $registration->status_admission == 1 && $registration->status_enrollment == 0)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Verified</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Processing</div>
                     </div>
                     @elseif($registration->status == 1 && $registration->status_admission == 1 && $registration->status_enrollment == 1)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Verified</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Verified</div>
                     </div>
 
                     @elseif($registration->status == 0 && $registration->status_admission == 1 && $registration->status_enrollment == 0)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Verified</div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Processing</div>
                     </div>
 
                     @elseif($registration->status == 0 && $registration->status_admission == 0 && $registration->status_enrollment == 1)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Processing</div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Verified</div>
                     </div>
 
                     @elseif($registration->status == 0 && $registration->status_admission == 1 && $registration->status_enrollment == 1)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Verified</div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Verified</div>
                     </div>
 
 
                     @elseif($registration->status == 1 && $registration->status_admission == 0 && $registration->status_enrollment == 1)
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Processing</div>
+                        <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Verified</div>
                         <div class="progress-bar bg-success" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Verified</div>
                     </div>
 
                     @else
                     <div class="progress" style="height: 60px; font-size:15px">
-                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Admission Processing</div>
+                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Payment Processing</div>
                         <div class="progress-bar bg-secondary" role="progressbar" style="width: 33.3%;" aria-valuenow="33.3" aria-valuemin="0" aria-valuemax="100">Enrollment Processing</div>
                     </div>
                     @endif

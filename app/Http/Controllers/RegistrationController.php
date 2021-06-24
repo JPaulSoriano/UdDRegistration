@@ -155,6 +155,19 @@ class RegistrationController extends Controller
     }
 
 
+    public function tempStudentNo(Request $request, Registration $registration)
+    {
+        $registration->stud_no = $request->stud_no." (Temp ID) ";
+        $registration->save();
+
+        if($registration->status_admission == "0") {
+            return redirect()->route('registrations.admit', $registration);
+        }
+
+        return redirect()->route('registrations.index');
+    }
+
+
     public function unadmit(Registration $registration)
     {
         $registration->status_admission = '0';
