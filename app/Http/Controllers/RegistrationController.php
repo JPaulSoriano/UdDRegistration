@@ -46,7 +46,7 @@ class RegistrationController extends Controller
             'last_school' => 'required',
             'payment_method' => 'nullable',
             'payment_ref' => 'nullable|unique:registrations,payment_ref',
-            'image' => 'nullable',
+            'image' => 'nullable|image',
             'auth_first_name' => 'nullable',
             'auth_last_name' => 'nullable',
             'auth_middle_name' => 'nullable'
@@ -89,7 +89,7 @@ class RegistrationController extends Controller
     public function update(Request $request, Registration $registration)
     {
         $request->validate([
-            'image' => 'required',
+            'image' => 'required|image',
             'payment_method' => 'required',
             'payment_ref' => 'required|unique:registrations,payment_ref',
             'auth_first_name' => 'nullable',
