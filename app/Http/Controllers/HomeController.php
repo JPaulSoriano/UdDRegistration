@@ -41,5 +41,11 @@ class HomeController extends Controller
         return view('registrations.rtoday', compact('rtoday'));
     }
 
+    public function total()
+    {
+        $total = Registration::all();
+        return view('registrations.total', compact('total'));
+    }
+
 
 }
