@@ -23,8 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $registrations = Registration::where('year_level', '=', 1)->count();
-        return view('home', compact('registrations'));
+        $fyear = Registration::where('year_level', '=', 1)->count();
+        $rtoday = Registration::whereDate('created_at', '=', date('Y-m-d'))->count();
+        $total = Registration::all()->count();
+        return view('home', compact('fyear', 'rtoday', 'total'));
     }
 
     public function fyear()
@@ -32,4 +34,12 @@ class HomeController extends Controller
         $fyear = Registration::where('year_level', '=', 1)->get();
         return view('registrations.fyear', compact('fyear'));
     }
+
+    public function rtoday()
+    {
+        $rtoday = Registration::whereDate('created_at', '=', date('Y-m-d'))->get();
+        return view('registrations.rtoday', compact('rtoday'));
+    }
+
+
 }

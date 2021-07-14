@@ -25,6 +25,7 @@ Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/fyear', 'HomeController@fyear')->name('fyear');
+Route::get('/rtoday', 'HomeController@rtoday')->name('rtoday');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
