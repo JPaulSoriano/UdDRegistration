@@ -24,6 +24,7 @@ Route::get('/process', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/fyear', 'HomeController@fyear')->name('fyear');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
@@ -46,6 +47,7 @@ Route::put('/update-stud-no/{registration}', 'RegistrationController@updateStude
 Route::put('/temp-stud-no/{registration}', 'RegistrationController@tempStudentNo')->name('registrations.tempstudent.no');
 
 Route::resource('registrations','RegistrationController');
+
 
 
 Route::get('/view-attach', function(){

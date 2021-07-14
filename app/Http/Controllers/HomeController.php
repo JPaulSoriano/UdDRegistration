@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Registration;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +23,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $registrations = Registration::where('year_level', '=', 1)->count();
+        return view('home', compact('registrations'));
+    }
+
+    public function fyear()
+    {
+        $fyear = Registration::where('year_level', '=', 1)->get();
+        return view('registrations.fyear', compact('fyear'));
     }
 }
