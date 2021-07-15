@@ -10,8 +10,12 @@
         </div>
     @endif
 
-
-    <table class="table table-responsive table-bordered" style="font-size: 14px" id="registration">
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Registrations
+      </div>
+    <div class="card-body">
+    <table class="table table-responsive table-bordered" style="font-size: 12px" id="registration">
         <thead>
         <tr>
             <th>Date Registered</th>
@@ -149,6 +153,8 @@
         @endforeach
         </tbody>
     </table>
+    </div>
+    </div>
     @foreach ($registrations as $registration)
         <!-- Modal -->
         <div class="modal fade" id="modal-{{ $registration->id }}" tabindex="-1">

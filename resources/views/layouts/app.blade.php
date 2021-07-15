@@ -40,9 +40,9 @@
                         @guest
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
-                            <li><a class="nav-link" href="{{ route('home') }}">Reports</a></li>
                             <li><a class="nav-link" href="{{ route('registrations.index') }}">Registrations</a></li>
                             @role('Super Admin')
+                            <li><a class="nav-link" href="{{ route('home') }}">Reports</a></li>
                             <li><a class="nav-link" href="{{ route('users.index') }}">Users</a></li>
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
                             <li><a class="nav-link" href="{{ route('departments.index') }}">Departments</a></li>

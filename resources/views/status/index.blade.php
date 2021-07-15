@@ -5,7 +5,7 @@
 <div class="container">
 
     <div class="row justify-content-center">
-        <div class="col-lg-8">
+        <div class="col-lg-6">
             <form action="{{ route('status') }}" method="GET">
                 <div class="row">
 
@@ -16,7 +16,7 @@
                     </div>
 
                     <div class="col-xs-2 col-sm-2 col-md-2">
-                        <button class="btn btn-primary" type="submit">CHECK</button>
+                        <button class="btn btn-primary" type="submit">Check</button>
                     </div>
                 </div>
             </form>
@@ -29,36 +29,45 @@
 
 
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-
-
+        <div class="col-lg-6">
             @if($registrations->isNotEmpty())
+
                 @foreach ($registrations as $registration)
                     <div class="row">
-                        <div class="col-sm-6">
-                            <p><span class="font-weight-bold">Name:</span> {{ $registration->full_name }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><span class="font-weight-bold">Course:</span> {{ $registration->course->name }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p><span class="font-weight-bold">Year:</span> {{ $registration->year_level }}</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><span class="font-weight-bold">Payment Method:</span> {{ $registration->payment_method }}</p>
-                        </div>
-
-                         @if(!$registration->payment_ref)
-                         <div class="col-xs-12 col-sm-12 col-md-12 my-3 text-center">
-                            <p class="text-danger font-weight-bold h4">You have not yet paid for registration <span class="mx-2"><a href="{{ route('registrations.edit', $registration->id) }}" class="btn btn-sm btn-primary" type="submit">Pay Now</a></span></p>
+                        @if(!$registration->payment_ref)
+                        <div class="col-sm-12 text-center">
+                            <div class="alert alert-danger" role="alert">
+                            You have not yet paid for registration <span class="mx-2"><a href="{{ route('registrations.edit', $registration->id) }}" class="btn btn-sm btn-primary" type="submit">Pay Now</a></span>
+                            </div>
                         </div>
                         @else
                         @endif
-                        
+                    </div>       
+                    <div class="card mb-3">
+                        <div class="card-header bg-primary text-white">Information</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <p><span class="font-weight-bold badge badge-primary">Name:</span> {{ $registration->full_name }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p><span class="font-weight-bold badge badge-primary">Student Number:</span> {{ $registration->stud_no }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p><span class="font-weight-bold badge badge-primary">Course:</span> {{ $registration->course->name }}</p>
+                                </div>
+                                <div class="col-sm-12">
+                                    <p><span class="font-weight-bold badge badge-primary">Year:</span> {{ $registration->year_level }}</p>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <p><span class="font-weight-bold badge badge-primary">Payment Method:</span> {{ $registration->payment_method }}</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
+                            
 
                     @if($registration->status == 1 && $registration->status_admission == 0 && $registration->status_enrollment == 0)
                     <div class="progress" style="height: 60px; font-size:15px">

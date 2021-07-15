@@ -13,6 +13,7 @@ View Enrollment Status
 @endcomponent
 @component('mail::panel')
 Your reference number is <b>{{ $student->reg_ref }}</b>
+Your student number is <b>{{ $student->stud_no }}</b>
 @endcomponent
 
 <i>This is an automated message - please do not reply to this email. For further inquiries, please email us at [info@cdd.edu.ph](info@cdd.edu.ph)</i>
