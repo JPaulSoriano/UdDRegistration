@@ -22,12 +22,14 @@
     @endif
 
 
-    <table class="table table-bordered">
+    <table class="table table-borderless table-sm">
+    <thead class="bg-primary text-white text-center">
         <tr>
             <th>No</th>
             <th>Name</th>
             <th width="280px">Action</th>
         </tr>
+    </thead>
 	    @foreach ($departments as $department)
 	    <tr>
 	        <td>{{ ++$i }}</td>

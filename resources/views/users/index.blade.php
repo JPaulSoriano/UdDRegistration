@@ -21,7 +21,8 @@
 @endif
 
 
-<table class="table table-bordered">
+<table class="table table-borderless table-responsive table-sm">
+<thead class="bg-primary text-white text-center">
  <tr>
    <th>No</th>
    <th>Name</th>
@@ -29,6 +30,7 @@
    <th>Roles</th>
    <th width="280px">Action</th>
  </tr>
+</thead>
  @foreach ($data as $key => $user)
   <tr>
     <td>{{ ++$i }}</td>

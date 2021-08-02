@@ -42,7 +42,7 @@
         </tr>
         </thead>
         <tbody>
-        @foreach ($rtoday as $registration)
+        @foreach ($screenshot as $registration)
 	    <tr>
             <td>{{ $registration->created_at }}</td>
             <td>{{ $registration->reg_ref }}</td>
@@ -149,7 +149,7 @@
         </tbody>
     </table>
 
-    @foreach ($rtoday as $registration)
+    @foreach ($screenshot as $registration)
         <!-- Modal -->
         <div class="modal fade" id="modal-{{ $registration->id }}" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">

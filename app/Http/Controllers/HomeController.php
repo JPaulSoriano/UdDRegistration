@@ -26,7 +26,11 @@ class HomeController extends Controller
         $fyear = Registration::where('year_level', '=', 1)->count();
         $rtoday = Registration::whereDate('created_at', '=', date('Y-m-d'))->count();
         $total = Registration::all()->count();
-        return view('home', compact('fyear', 'rtoday', 'total'));
+        $verified = Registration::where('status', '=', '0')->count();
+        $admission = Registration::where('status_admission', '=', '0')->count();
+        $enrollment = Registration::where('status_enrollment', '=', '0')->count();
+        $screenshot = Registration::whereNull('image')->count();
+        return view('home', compact('fyear', 'rtoday', 'total', 'verified', 'admission', 'enrollment', 'screenshot'));
     }
 
     public function fyear()
@@ -47,5 +51,30 @@ class HomeController extends Controller
         return view('registrations.total', compact('total'));
     }
 
+
+    public function verified()
+    {
+        $verified = Registration::where('status', '=', '0')->get();
+        return view('registrations.verified', compact('verified'));
+    }
+
+    public function admission()
+    {
+        $admission = Registration::where('status_admission', '=', '0')->get();
+        return view('registrations.admission', compact('admission'));
+    }
+
+    public function enrollment()
+    {
+        $enrollment = Registration::where('status_enrollment', '=', '0')->get();
+        return view('registrations.enrollment', compact('enrollment'));
+    }
+
+
+    public function screenshot()
+    {
+        $screenshot = Registration::whereNull('image')->get();
+        return view('registrations.screenshot', compact('screenshot'));
+    }
 
 }

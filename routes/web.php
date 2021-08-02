@@ -27,6 +27,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/fyear', 'HomeController@fyear')->name('fyear');
 Route::get('/rtoday', 'HomeController@rtoday')->name('rtoday');
 Route::get('/total', 'HomeController@total')->name('total');
+Route::get('/verified', 'HomeController@verified')->name('verified');
+Route::get('/admission', 'HomeController@admission')->name('admission');
+Route::get('/enrollment', 'HomeController@enrollment')->name('enrollment');
+Route::get('/screenshot', 'HomeController@screenshot')->name('screenshot');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
@@ -53,7 +57,7 @@ Route::resource('registrations','RegistrationController');
 
 
 Route::get('/view-attach', function(){
-
     return response()->file(public_path('attachments/attachment.pdf'));
 });
+
 Route::get('/status', 'StatusController@status')->name('status');

@@ -9,15 +9,27 @@
     </div>
 @endif
 @role('Super Admin')
-    <div class="row">
-            <div class="col-sm-4">
+    <div class="row justify-content-center">
+            <div class="col-sm-4 my-3">
                 <a href="{{ route('fyear') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>First year</h3><h1 class="font-weight-bold text-info">{{ $fyear}}</h1></a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 my-3">
                 <a href="{{ route('rtoday') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>Registered Today</h3><h1 class="font-weight-bold text-info">{{ $rtoday}}</h1></a>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-4 my-3">
                 <a href="{{ route('total') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>Total</h3><h1 class="font-weight-bold text-info">{{ $total}}</h1></a>
+            </div>
+            <div class="col-sm-4 my-3">
+                <a href="{{ route('verified') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>Not Yet Verified</h3><h1 class="font-weight-bold text-info">{{ $verified}}</h1></a>
+            </div>
+            <div class="col-sm-4 my-3">
+                <a href="{{ route('admission') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>Not Yet Admitted</h3><h1 class="font-weight-bold text-info">{{ $admission}}</h1></a>
+            </div>
+            <div class="col-sm-4 my-3">
+                <a href="{{ route('enrollment') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>Not Yet Enrolled</h3><h1 class="font-weight-bold text-info">{{ $enrollment}}</h1></a>
+            </div>
+            <div class="col-sm-4 my-3">
+                <a href="{{ route('screenshot') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>No Screenshot</h3><h1 class="font-weight-bold text-info">{{ $screenshot}}</h1></a>
             </div>
         </div>
     </div>
