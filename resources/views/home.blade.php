@@ -8,7 +8,7 @@
         {{ session('status') }}
     </div>
 @endif
-@role('Super Admin')
+@role('Super Admin|Sao')
     <div class="row justify-content-center">
             <div class="col-sm-4 my-3">
                 <a href="{{ route('fyear') }}" type="button" class="btn btn-lg btn-block btn-primary p-5"><h3>First year</h3><h1 class="font-weight-bold text-info">{{ $fyear}}</h1></a>
@@ -35,7 +35,7 @@
     </div>
 @endrole
 
-@role('Sao|Dean|Cashier')
+@role('Dean|Cashier')
 <div class="row justify-content-center">
     <div class="col-sm-8">
         <div class="jumbotron">
