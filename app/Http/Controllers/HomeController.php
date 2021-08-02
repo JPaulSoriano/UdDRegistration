@@ -30,6 +30,7 @@ class HomeController extends Controller
         $admission = Registration::where('status_admission', '=', '0')->count();
         $enrollment = Registration::where('status_enrollment', '=', '0')->count();
         $screenshot = Registration::whereNull('image')->count();
+        
         return view('home', compact('fyear', 'rtoday', 'total', 'verified', 'admission', 'enrollment', 'screenshot'));
     }
 
