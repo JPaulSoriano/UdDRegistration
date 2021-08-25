@@ -90,7 +90,9 @@
                                                             <option value="2">Second Year</option>
                                                             <option value="3">Third Year</option>
                                                             <option value="4">Fourth Year</option>
-                                                            <option value="5">Fift Year</option>
+                                                            <option value="5">Fifth Year</option>
+                                                            <option value="6">Grade 11</option>
+                                                            <option value="7">Grade 12</option>
                                                         </select>
                                             </div>
                                         </div>
