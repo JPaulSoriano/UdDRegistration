@@ -81,7 +81,11 @@
             <td>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#modal-{{ $registration->id }}">
-            View
+            @if($registration->image == null)
+              No Screenshot Provided
+            @else
+              View
+            @endif
             </button>
             </td>
             <td id="or">{{ $registration->or_no }}</td>
