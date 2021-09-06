@@ -18,6 +18,7 @@
             <p class="lead">Please select the service you wish to process.</p>
             <a href="/process" type="button" class="btn btn-lg btn-primary my-1">Online Registration</a>
             <a href="{{ route('status') }}" type="button" class="btn btn-lg btn-primary my-1">Enrollment Status</a>
+            <a href="{{ route('search.index') }}" type="button" class="btn btn-lg btn-primary my-1">Search Your Gsuite Accounts</a>
             </div>
         </div>
     </div>

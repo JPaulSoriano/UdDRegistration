@@ -49,6 +49,7 @@
                             <li><a class="nav-link" href="{{ route('roles.index') }}">Roles</a></li>
                             <li><a class="nav-link" href="{{ route('departments.index') }}">Departments</a></li>
                             <li><a class="nav-link" href="{{ route('courses.index') }}">Courses</a></li>
+                            <li><a class="nav-link" href="{{ route('import-excel') }}">Import Excel</a></li>
                             @endrole
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
