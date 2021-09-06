@@ -87,6 +87,7 @@
               View
             @endif
             </button>
+            {{ $registration->image }}
             </td>
             <td id="or">{{ $registration->or_no }}</td>
      
