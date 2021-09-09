@@ -65,3 +65,7 @@ Route::get('/status', 'StatusController@status')->name('status');
 Route::get('/search-accounts', 'GoogleSuiteController@index')->name('search.index');
 Route::post('/import-excel', 'GoogleSuiteController@uploadExcel')->name('import-excel');
 Route::get('/import-excel', 'GoogleSuiteController@importExcel')->name('import-excel-form');
+
+
+
+Route::get('/categorize/{course}', 'RegistrationController@categorize')->name('categorize');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Registration;
 use App\Course;
+use App\Department;
 use App\Mail\RegisteredStudent;
 use App\Mail\RegisteredComplete;
 use Illuminate\Http\Request;
@@ -201,6 +202,15 @@ class RegistrationController extends Controller
         Mail::to($registration->email)->send(new RegisteredComplete($registration));
 
         return redirect()->route('registrations.index');
+    }
+
+
+    public function categorize(Course $course)
+    {
+        $registrations = Registration::where('course_id', $course->id)->latest()->paginate(5);
+
+        return view('registrations.index',compact('registrations'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
 }

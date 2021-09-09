@@ -46,6 +46,18 @@
                 WELCOME {{ Auth::user()->name }}!
                 </div>
         </div>
+        <div class="dropdown">
+            <button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Select Course
+            </button>
+        
+            <div class="dropdown-menu btn-block">
+                @foreach ($courses as $course)
+                    <a class="dropdown-item text-center" href="{{ route('categorize', $course) }}">{{ $course->name}}</a>
+                @endforeach
+            </div>
+
+        </div>
     </div>
 </div>
 @endrole
