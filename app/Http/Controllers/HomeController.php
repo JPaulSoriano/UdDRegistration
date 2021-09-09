@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Registration;
 use App\Course;
+use App\Department;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $courses = Course::all();
+        $departments = Department::all();
 
         $fyear = Registration::where('year_level', '=', 1)->count();
         $rtoday = Registration::whereDate('created_at', '=', date('Y-m-d'))->count();
@@ -34,7 +36,7 @@ class HomeController extends Controller
         $enrollment = Registration::where('status_enrollment', '=', '0')->count();
         $screenshot = Registration::whereNull('image')->count();
         
-        return view('home', compact('fyear', 'rtoday', 'total', 'verified', 'admission', 'enrollment', 'screenshot', 'courses'));
+        return view('home', compact('fyear', 'rtoday', 'total', 'verified', 'admission', 'enrollment', 'screenshot', 'courses','departments'));
     }
 
     public function fyear()

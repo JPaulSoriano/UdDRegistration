@@ -69,3 +69,4 @@ Route::get('/import-excel', 'GoogleSuiteController@importExcel')->name('import-e
 
 
 Route::get('/categorize/{course}', 'RegistrationController@categorize')->name('categorize');
+Route::get('/categorizedepartment/{department}', 'RegistrationController@categorizedepartment')->name('categorizedepartment');

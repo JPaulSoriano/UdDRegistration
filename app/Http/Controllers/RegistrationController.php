@@ -213,4 +213,12 @@ class RegistrationController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
+    public function categorizedepartment(Department $department)
+    {
+        $courses = Course::where('department_id', $department->id)->latest()->paginate(5);
+
+        return view('registrations.categorizedepartment',compact('courses'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
+    }
+
 }
