@@ -33,6 +33,13 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="dropdown-menu btn-block">
+            @foreach ($departments as $department)
+                <a class="dropdown-item text-center" href="{{ route('categorizedepartment', $department) }}">{{ $department->name}}</a>
+            @endforeach
+        </div>
+    </div>
 @endrole
 
 @role('Dean|Cashier')
