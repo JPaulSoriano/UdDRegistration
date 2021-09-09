@@ -34,10 +34,17 @@
         </div>
     </div>
     <div class="row">
-        <div class="dropdown-menu btn-block">
-            @foreach ($departments as $department)
-                <a class="dropdown-item text-center" href="{{ route('categorizedepartment', $department) }}">{{ $department->name}}</a>
-            @endforeach
+        <div class="dropdown">
+            <button class="btn btn-block btn-primary dropdown-toggle" type="button" data-toggle="dropdown">
+                Select Department
+            </button>
+        
+            <div class="dropdown-menu btn-block">
+                @foreach ($departments as $department)
+                    <a class="dropdown-item text-center" href="{{ route('categorizedepartment', $department) }}">{{ $department->name}}</a>
+                @endforeach
+            </div>
+
         </div>
     </div>
 @endrole
