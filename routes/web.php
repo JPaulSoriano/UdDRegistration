@@ -31,6 +31,7 @@ Route::get('/verified', 'HomeController@verified')->name('verified');
 Route::get('/admission', 'HomeController@admission')->name('admission');
 Route::get('/enrollment', 'HomeController@enrollment')->name('enrollment');
 Route::get('/screenshot', 'HomeController@screenshot')->name('screenshot');
+Route::get('/secondsem', 'HomeController@secondsem')->name('secondsem');
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');

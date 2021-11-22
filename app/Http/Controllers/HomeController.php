@@ -82,6 +82,13 @@ class HomeController extends Controller
         $screenshot = Registration::whereNull('image')->get();
         return view('registrations.screenshot', compact('screenshot'));
     }
+
+
+    public function secondsem()
+    {
+        $secondsem = Registration::where('semester', 1)->get();
+        return view('registrations.secondsem', compact('secondsem'));
+    }
     
 
 }
