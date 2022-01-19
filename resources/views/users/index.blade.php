@@ -37,7 +37,6 @@
     <td>{{ ++$i }}</td>
     <td>{{ $user->name }}</td>
     <td>{{ $user->email }}</td>
-    <td>{{ $user->department->name }}</td>
     <td>
       @if(!empty($user->getRoleNames()))
         @foreach($user->getRoleNames() as $v)
