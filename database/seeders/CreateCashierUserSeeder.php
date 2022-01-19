@@ -1,5 +1,6 @@
 <?php
-  
+ 
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\User;
 use Spatie\Permission\Models\Role;
@@ -17,6 +18,7 @@ class CreateCashierUserSeeder extends Seeder
         $user = User::create([
         	'name' => 'Cashier', 
         	'email' => 'cashier@cashier.com',
+            'department_id' => '1',
         	'password' => bcrypt('arcreactor2021')
         ]);
   

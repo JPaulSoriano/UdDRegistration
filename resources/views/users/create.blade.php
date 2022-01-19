@@ -48,6 +48,18 @@
             {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control')) !!}
         </div>
     </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+                    <label>Select Department</label>
+                    <select class="form-control" name="department_id">
+                    @foreach ($departments as $department)
+                    <option value="{{ $department->id }}">{{ $department->name }}</option>
+                    @endforeach
+                    </select>
+        </div>
+    </div>
+
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Role:</strong>

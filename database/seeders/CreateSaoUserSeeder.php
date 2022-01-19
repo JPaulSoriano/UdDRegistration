@@ -1,11 +1,12 @@
 <?php
   
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
   
-class CreateDeanUserSeeder extends Seeder
+class CreateSaoUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,12 +16,13 @@ class CreateDeanUserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-        	'name' => 'Dean', 
-        	'email' => 'dean@dean.com',
+        	'name' => 'Sao', 
+        	'email' => 'sao@sao.com',
+            'department_id' => '1',
         	'password' => bcrypt('arcreactor2021')
         ]);
   
-        $role = Role::create(['name' => 'Dean']);
+        $role = Role::create(['name' => 'Sao']);
    
         $permissions = Permission::pluck('id','id')->all();
   

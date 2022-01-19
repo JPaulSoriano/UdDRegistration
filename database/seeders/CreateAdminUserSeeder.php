@@ -1,5 +1,6 @@
 <?php
-  
+
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use App\User;
 use Spatie\Permission\Models\Role;
@@ -17,6 +18,7 @@ class CreateAdminUserSeeder extends Seeder
         $user = User::create([
         	'name' => 'Super Admin', 
         	'email' => 'superadmin@superadmin.com',
+            'department_id' => '1',
         	'password' => bcrypt('arcreactor2021')
         ]);
   

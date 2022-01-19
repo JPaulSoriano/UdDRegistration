@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Department;
 use Spatie\Permission\Models\Role;
+use Illuminate\Support\Arr;
 use DB;
 use Hash;
     
@@ -38,8 +40,9 @@ class UserController extends Controller
      */
     public function create()
     {
+        $departments = Department::all();
         $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        return view('users.create',compact('roles', 'departments'));
     }
     
     /**
@@ -54,6 +57,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirm-password',
+            'department_id' => 'required',
             'roles' => 'required'
         ]);
     
@@ -76,11 +80,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $departments = Department::all();
         $user = User::find($id);
         $roles = Role::pluck('name','name')->all();
         $userRole = $user->roles->pluck('name','name')->all();
     
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('users.edit',compact('user','roles','userRole', 'departments'));
     }
     
     /**
@@ -103,7 +108,7 @@ class UserController extends Controller
         if(!empty($input['password'])){ 
             $input['password'] = Hash::make($input['password']);
         }else{
-            $input = array_except($input,array('password'));    
+            $input = Arr::except($input,array('password'));    
         }
     
         $user = User::find($id);
