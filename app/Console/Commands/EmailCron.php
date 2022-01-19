@@ -42,9 +42,15 @@ class EmailCron extends Command
     {
 
         $admission = Registration::where('status_admission', '=', '0')->count();
+        $rtoday = Registration::whereDate('created_at', '=', date('Y-m-d'))->count();
+        $unverified = Registration::where('status', '=', '0')->count();
+        $notenrolled = Registration::where('status_enrollment', '=', '0')->count();
         
         $details = [
-            'body' =>  $admission
+            'admission' =>  $admission,
+            'rtoday' => $rtoday,
+            'unverified' => $unverified,
+            'notenrolled' => $notenrolled
         ];
 
         $users = User::all();
