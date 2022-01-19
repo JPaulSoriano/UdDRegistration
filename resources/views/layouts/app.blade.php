@@ -41,8 +41,8 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
                             <li><a class="nav-link" href="{{ route('home') }}">Home</a></li>
-                            <li><a class="nav-link" href="{{ route('registrations.index') }}">Registrations</a></li>
                             @role('Super Admin|Sao')
+                            <li><a class="nav-link" href="{{ route('registrations.index') }}">Registrations</a></li>
                             <li><a class="nav-link" href="{{ route('home') }}">Reports</a></li>
                             @endrole
                             @role('Super Admin')
