@@ -27,7 +27,6 @@
    <th>No</th>
    <th>Name</th>
    <th>Email</th>
-   <th>Department</th>
    <th>Roles</th>
    <th width="280px">Action</th>
  </tr>
