@@ -207,7 +207,7 @@ class RegistrationController extends Controller
 
     public function categorize(Course $course)
     {
-        $registrations = Registration::where('course_id', $course->id)->latest();
+        $registrations = Registration::where('course_id', $course->id)->latest()->paginate(10);
 
         return view('registrations.index',compact('registrations'))
             ->with('i', (request()->input('page', 1) - 1) * 5);
