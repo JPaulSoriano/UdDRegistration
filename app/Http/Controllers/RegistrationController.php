@@ -215,7 +215,7 @@ class RegistrationController extends Controller
 
     public function categorizedepartment(Department $department)
     {
-        $courses = Course::where('department_id', $department->id)->all();
+        $courses = Course::where('department_id', $department->id)->get();
 
         return view('registrations.categorizedepartment',compact('courses'))
             ->with('i', (request()->input('page', 1) - 1) * 5);

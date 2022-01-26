@@ -35,10 +35,6 @@
 	    @endforeach
     </table>
 
-
-    {!! $courses->links() !!}
-
-
     </div>
 </div>
 </div>
