@@ -33,7 +33,7 @@
                                                     <input type="text" name="year" class="form-control" placeholder="Year">
                                                 </div>
                                                 <div class="mt-0">
-                                                    <p class="text-lead">Example: 2020-2021</p>
+                                                    <p class="text-lead">Example: 2020-2021 (ONGOING ENROLLMENT IS FOR FIRST SEMESTER A.Y. 2022 - 2023)</p>
                                                 </div>
                                             </div>
                                             <div class="col-xs-4 col-sm-4 col-md-4">

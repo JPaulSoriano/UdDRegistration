@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Registration
+                    Universidad de Dagupan (Formerly Colegio de Dagupan and Computronix College)
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

@@ -21,10 +21,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <div class="navbar-brand">
-                    {{ _('Search your accounts') }}
+                    Universidad de Dagupan (Formerly Colegio de Dagupan and Computronix College)
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">

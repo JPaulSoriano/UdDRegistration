@@ -19,7 +19,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Colegio de Dagupan
+                    Universidad de Dagupan (Formerly Colegio de Dagupan and Computronix College)
                 </a>
             </div>
         </nav>
