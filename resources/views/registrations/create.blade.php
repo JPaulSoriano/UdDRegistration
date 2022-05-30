@@ -234,7 +234,7 @@
 document.getElementById('stud_type').onchange = function () {
     document.getElementById("stud_no").disabled = (this.value === '0' || this.value === '2');
     document.getElementById("school_att").readOnly = (this.value === '1');
-    document.getElementById("school_att").value = this.value === '1' ? 'Colegio de Dagupan' : '';
+    document.getElementById("school_att").value = this.value === '1' ? 'Universidad de Dagupan' : '';
 }
 </script>
 @endsection
