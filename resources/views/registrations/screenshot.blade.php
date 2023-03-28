@@ -35,10 +35,10 @@
             @role('Cashier|Super Admin|Sao')
             <th>Payment Action</th>
             @endrole
-            @role('Dean|Super Admin|Sao')
+            @role('Dean|Super Admin|Sao|Acad')
             <th>Enroll Action</th>
             @endrole
-            
+
         </tr>
         </thead>
         <tbody>
@@ -90,7 +90,7 @@
             {{ $registration->image }}
             </td>
             <td id="or">{{ $registration->or_no }}</td>
-     
+
                 @role('Sao|Super Admin')
                     <td>
                     @if($registration->status_admission == 1)
@@ -114,7 +114,7 @@
 
                 @role('Cashier|Super Admin|Sao')
                     <td>
-                       
+
                         @if($registration->status == 1)
                         <form action="{{ route('registrations.unverify', $registration) }}" method="POST">
                             @csrf
@@ -129,11 +129,11 @@
                         @if($registration->or_no)
                         <a href="#" class="btn btn-secondary btn-sm orno btn-block" data-id="{{ $registration->id }}">OR No</a>
                         @endif
-                        
+
                     </td>
                 @endrole
 
-                @role('Dean|Super Admin|Sao')
+                @role('Dean|Super Admin|Sao|Acad')
                     <td>
                       @if($registration->status_enrollment == 1)
                       <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
