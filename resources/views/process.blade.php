@@ -8,7 +8,7 @@
         <div class="col-lg-12">
             <div class="jumbotron ">
             <h1 class="display-4">Registration Process</h1>
-            <p class="lead">To complete the registration process, a photo/screenshot of your transaction of your registration fee (Php 500.00) through bank or remittance center is needed. Please check the following instructions and details for the payment options:</p>
+            <p class="lead">To complete the registration process, a photo/screenshot of your transaction of your admission fee (Php 500.00) through bank or remittance center is needed. Please check the following instructions and details for the payment options:</p>
             <h4 class="font-weight-bold">A. BPI BANK</h4>
             <p><span class="font-weight-bold">Account Name:</span> Colegio de Dagupan, Inc. or Colegio de Dagupan</br>
             <span class="font-weight-bold">Account Number:</span> 000555-2338-84</br>
