@@ -14,7 +14,6 @@
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -24,7 +23,7 @@
         <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <div class="navbar-brand">
-                    Universidad de Dagupan (Formerly Colegio de Dagupan and Computronix College)
+                    Universidad de Dagupan
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
