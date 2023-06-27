@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row my-3">
         <div class="col-lg-12">
- 
+
 
 
         @if ($errors->any())
@@ -19,7 +19,7 @@
             </div>
         @endif
 
-       
+
                 <form action="{{ route('registrations.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
@@ -33,7 +33,7 @@
                                                     <input type="text" name="year" class="form-control" placeholder="Year">
                                                 </div>
                                                 <div class="mt-0">
-                                                    <p class="text-lead">Example: 2020-2021 (ONGOING ENROLLMENT IS FOR FIRST SEMESTER A.Y. 2022 - 2023)</p>
+                                                    <p class="text-lead">Example: 2020-2021 (ONGOING ENROLLMENT IS FOR FIRST SEMESTER A.Y. 2023 - 2024)</p>
                                                 </div>
                                             </div>
                                             <div class="col-xs-4 col-sm-4 col-md-4">
@@ -145,7 +145,7 @@
                                             </div>
                                         </div>
 
-                                        
+
                                     </div>
 
                                 </div>
@@ -222,7 +222,7 @@
                                     <button type="submit" class="btn btn-primary">Submit</button>
                             </div>
                 </form>
-    
+
 
     </div>
     </div>
