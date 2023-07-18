@@ -13,12 +13,12 @@
     <table class="table table-striped table-borderless table-responsive table-sm" style="font-size: 12px" id="registration">
         <thead class="bg-primary text-white text-center">
         <tr>
-            <th>Date Registered</th>
-            <th>Reference No</th>
+            <th>Date</th>
+            <th>Ref No</th>
             <th>Year</th>
-            <th>Semester</th>
+            <th>Sem</th>
             <th>Type</th>
-            <th>Student No</th>
+            <th>Stud No</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -26,17 +26,17 @@
             <th>Year</th>
             <th>Last School Attended</th>
             <th>Payment Method</th>
-            <th>Payment Reference No</th>
+            <th>Payment Ref No</th>
             <th>Screenshot</th>
             <th>Or No</th>
             @role('Sao|Super Admin')
-            <th>Admission Action</th>
+            <th>Admission</th>
             @endrole
             @role('Cashier|Super Admin|Sao')
-            <th>Payment Action</th>
+            <th>Payment</th>
             @endrole
             @role('Dean|Super Admin|Sao|Acad')
-            <th>Enroll Action</th>
+            <th>Enroll</th>
             @endrole
 
         </tr>
@@ -82,7 +82,7 @@
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#modal-{{ $registration->id }}">
             @if($registration->image == null)
-              No Screenshot Provided
+              None
             @else
               View
             @endif
@@ -165,7 +165,7 @@
             @else
             <img src="{{asset('storage/'.$registration->image)}}" class="img-fluid" alt="{{ $registration->payment_ref }}">
                 @if(!$registration->auth_first_name)
-                    <p class="h4 font-weight-bold my-3">Student Process the Payment himself</p>
+                    <p class="h4 font-weight-bold my-3">Student Process the Payment him/herself</p>
                 @else
                 <p class="h4 font-weight-bold my-3">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
                 @endif
