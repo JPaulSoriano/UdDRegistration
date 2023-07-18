@@ -13,12 +13,12 @@
     <table class="table table-striped table-borderless table-responsive table-sm" style="font-size: 12px" id="registration">
         <thead class="bg-primary text-white text-center">
         <tr>
-            <th>Date Registered</th>
-            <th>Reference No</th>
+            <th>Date</th>
+            <th>Ref No</th>
             <th>Year</th>
-            <th>Semester</th>
+            <th>Sem</th>
             <th>Type</th>
-            <th>Student No</th>
+            <th>Stud No</th>
             <th>Name</th>
             <th>Email</th>
             <th>Phone</th>
@@ -30,13 +30,13 @@
             <th>Screenshot</th>
             <th>Or No</th>
             @role('Sao|Super Admin')
-            <th>Admission Action</th>
+            <th>Admission</th>
             @endrole
             @role('Cashier|Super Admin|Sao')
-            <th>Payment Action</th>
+            <th>Payment</th>
             @endrole
             @role('Dean|Super Admin|Sao|Acad')
-            <th>Enroll Action</th>
+            <th>Enroll</th>
             @endrole
 
         </tr>
@@ -80,9 +80,9 @@
             <td>{{ $registration->payment_ref }}</td>
             <td>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-sm btn-primary btn-block" data-toggle="modal" data-target="#modal-{{ $registration->id }}">
+            <button type="button" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-{{ $registration->id }}">
             @if($registration->image == null)
-              No Screenshot Provided
+              None
             @else
               View
             @endif
@@ -97,15 +97,15 @@
                     <form action="{{ route('registrations.unadmit', $registration) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger btn-block">Unadmit</button>
+                        <button type="submit" class="btn btn-sm btn-danger">Unadmit</button>
                     </form>
                     @else
                     <!-- <a href="{{ route('registrations.admit', $registration) }}"
-                        class="btn btn-sm btn-primary btn-block">Admit</a> -->
-                        <button class="btn btn-sm btn-primary admit btn-block" data-id="{{ $registration->id }}">Admit</button>
+                        class="btn btn-sm btn-primary">Admit</a> -->
+                        <button class="btn btn-sm btn-primary admit" data-id="{{ $registration->id }}">Admit</button>
                     @endif
                         @if($registration->status_enrollment == 0)
-                            <a href="#" class="btn btn-secondary btn-sm admit btn-block" data-id="{{ $registration->id }}">Temp Stud No</a>
+                            <a href="#" class="btn btn-secondary btn-sm admit" data-id="{{ $registration->id }}">Temp Stud No</a>
                         @endif
                     </td>
                 @endrole
@@ -119,15 +119,15 @@
                         <form action="{{ route('registrations.unverify', $registration) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger btn-block">Unverify</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Unverify</button>
                         </form>
                         @else
                         <!-- <a href="{{ route('registrations.verify', $registration) }}"
                             class="btn btn-sm btn-primary">Verify</a> -->
-                        <button type="button" class="btn btn-sm btn-primary orno btn-block" data-id="{{ $registration->id }}">Verify</button>
+                        <button type="button" class="btn btn-sm btn-primary orno" data-id="{{ $registration->id }}">Verify</button>
                         @endif
                         @if($registration->or_no)
-                        <a href="#" class="btn btn-secondary btn-sm orno btn-block" data-id="{{ $registration->id }}">OR No</a>
+                        <a href="#" class="btn btn-secondary btn-sm orno" data-id="{{ $registration->id }}">OR No</a>
                         @endif
 
                     </td>
@@ -139,14 +139,14 @@
                       <form action="{{ route('registrations.unenroll', $registration) }}" method="POST">
                           @csrf
                           @method('DELETE')
-                          <button type="submit" class="btn btn-sm btn-danger btn-block">Unenroll</button>
+                          <button type="submit" class="btn btn-sm btn-danger">Unenroll</button>
                       </form>
                       @else
                       <!-- <a href="{{ route('registrations.enroll', $registration) }}"
                           class="btn btn-sm btn-primary">Enroll</a> -->
-                      <button class="btn btn-sm btn-primary enrol btn-block" data-id="{{ $registration->id }}">Enroll</button>
+                      <button class="btn btn-sm btn-primary enrol" data-id="{{ $registration->id }}">Enroll</button>
                       @endif
-                      <a href="#" class="btn btn-secondary btn-sm enrol btn-block" data-id="{{ $registration->id }}">Stud No</a>
+                      <a href="#" class="btn btn-secondary btn-sm enrol" data-id="{{ $registration->id }}">Stud No</a>
                     </td>
                 @endrole
 	    </tr>
@@ -165,7 +165,7 @@
             @else
             <img src="{{asset('storage/'.$registration->image)}}" class="img-fluid" alt="{{ $registration->payment_ref }}">
                 @if(!$registration->auth_first_name)
-                    <p class="h4 font-weight-bold my-3">Student Process the Payment himself</p>
+                    <p class="h4 font-weight-bold my-3">Student Process the Payment him/herself</p>
                 @else
                 <p class="h4 font-weight-bold my-3">Payment Authorization: <span class="font-weight-light">{{ $registration->auth_last_name }}, {{ $registration->auth_first_name }} {{ $registration->auth_middle_name }}</span></p>
                 @endif
